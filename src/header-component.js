@@ -1,4 +1,4 @@
-import { auth } from './firebase.js';
+import { auth } from './firebase/firebase.js';
 
 export function makeHeaderTemplate() {
     const dom = `
@@ -32,7 +32,7 @@ export default function loadHeader(options) {
     const dom = makeHeaderTemplate();
     const header = dom.querySelector('header');
     headerContainer.appendChild(dom);
-
+    
     if(options && options.skipAuth) {
         return;
     }
@@ -50,5 +50,4 @@ export default function loadHeader(options) {
             window.location = './auth.html';
         }
     });
-
 }

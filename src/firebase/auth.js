@@ -1,4 +1,4 @@
-import loadHeader from './header-component.js';
+import loadHeader from '../header-component.js';
 import { auth } from './firebase.js';
 
 loadHeader({ skipAuth: true });

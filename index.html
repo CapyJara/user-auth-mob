@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
     <title>User Auth Mobing</title>
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-auth.js"></script>
@@ -13,11 +13,39 @@
     <div id="header-container"></div>
 
     <main>
-
-        <section>
-        </section>
-
-    </main>
+            <form id="filter-form">
+                <select id="species" name="species">
+                    <option value="" selected>Filter by Species</option>
+                    <option value="">No Filter</option>
+                    <option value="Human">Human</option>
+                    <option value="Humanoid">Humanoid</option>
+                    <option value="Alien">Alien</option>
+                    <option value="Mytholog">Mytholog</option>
+                    <option value="Poopybutthole">Poopybutthole</option>
+                    <option value="Animal">Animal</option>
+                </select>
+                <select id="status" name="status">
+                    <option value="" selected>Filter by Status</option>
+                    <option value="">No Filter</option>
+                    <option value="Alive">Alive</option>
+                    <option value="Dead">Dead</option>
+                    <option value="Unknown">Unknown</option>
+                </select>
+                <input type="text" name="name" id="name" placeholder="Search by Name">
+                <button type="submit">Search</button>
+            </form>
+    
+            <section id="paging-section">
+                <button id="previous-button">Previous</button>
+                <p><span id="current-page">1</span> of <span id="total-pages">1</span></p>
+                <button id="next-button">Next</button>
+            </section>
+    
+            <section>
+                <ul id="character-list">
+                </ul>
+            </section>
+        </main>
 
     <script type="module" src="./src/index.js">  </script>
 </body>
