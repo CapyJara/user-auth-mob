@@ -12,9 +12,10 @@ export function makeHeaderTemplate() {
 }
 
 export function makeUserTemplate(user) {
+    const userPhoto = user.photoURL || 'assets/placeholder-avatar.jpg';
     const dom = `
     <div id="user-profile">
-        <img src="${user.photoURL}">
+        <img src="${userPhoto}">
         <p>${user.displayName}</p>
         <button>Logout</button>
     </div>
