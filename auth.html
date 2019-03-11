@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./css/index.css">
-    <title>User Auth Mobing</title>
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <title>Authorization</title>
 </head>
 <body>
 
-    <div id="header-container"></div>
+    <header>
+        <p>Link header to this</p>
+    </header>
 
     <main>
-
-        <section>
-        </section>
-
+        <section id="auth-container"></section>
     </main>
-
-    <script type="module" src="./src/index.js">  </script>
+<script type="module" src="./src/auth.js">  </script>
 </body>
 </html>
