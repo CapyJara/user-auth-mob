@@ -35,6 +35,7 @@ export default function loadHeader() {
     const dom = makeHeaderTemplate(user);
     headerContainer.appendChild(dom);
 
+    // REVISIT AND WRITE THIS CODE WHEN AUTH FORM IS WORKING
     // auth.onAuthStateChanged(user => {
     //     if(user)
     // })
