@@ -2,7 +2,7 @@ const test = QUnit.test;
 
 QUnit.module('Header Template');
 
-import { makeUserTemplate } from '../src/header-component.js';
+import { makeHeaderTemplate } from '../src/header-component.js';
 
 test('does the hardcoded header match the template', assert => {
     //arrange
@@ -22,7 +22,7 @@ test('does the hardcoded header match the template', assert => {
         </header>
     `;
     //act
-    const result = makeUserTemplate(user);
+    const result = makeHeaderTemplate(user);
     //assert
     assert.htmlEqual(result, expected);
 });
