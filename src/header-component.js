@@ -3,7 +3,7 @@ import { auth } from './firebase/firebase.js';
 export function makeHeaderTemplate() {
     const dom = `
     <header>
-        <a href="index.html"><h1>The Books We Like</h1></a>
+        <a href="index.html"><h1>Rick and Morty Characters</h1></a>
     </header>
     `;
     const template = document.createElement('template');
