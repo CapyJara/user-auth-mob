@@ -4,7 +4,6 @@ export function makeHeaderTemplate() {
     const dom = `
     <header>
         <a href="index.html"><h1>The Books We Like</h1></a>
-        
     </header>
     `;
     const template = document.createElement('template');
@@ -28,16 +27,19 @@ export function makeUserTemplate(user) {
 const headerContainer = document.getElementById('header-container');
 
 export default function loadHeader() {
-    const user = {
-        displayName: 'Tom from Myspace',
-        photoURL: 'assets/placeholder-avatar.jpg'
-    };
-    const dom = makeHeaderTemplate(user);
+    
+    const dom = makeHeaderTemplate();
+    const header = dom.querySelector('header');
     headerContainer.appendChild(dom);
 
-    // REVISIT AND WRITE THIS CODE WHEN AUTH FORM IS WORKING
-    // auth.onAuthStateChanged(user => {
-    //     if(user)
-    // })
+    auth.onAuthStateChanged(user => {
+        if(user) {
+            const userDom = makeUserTemplate(user);
+            header.appendChild(userDom);
+        }
+        else {
+            window.location = './auth.html';
+        }
+    });
 
 }
