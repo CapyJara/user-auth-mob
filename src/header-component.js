@@ -26,15 +26,23 @@ export function makeUserTemplate(user) {
 
 const headerContainer = document.getElementById('header-container');
 
-export default function loadHeader() {
+export default function loadHeader(options) {
     
     const dom = makeHeaderTemplate();
     const header = dom.querySelector('header');
     headerContainer.appendChild(dom);
 
+    if(options && options.skipAuth) {
+        return;
+    }
+
     auth.onAuthStateChanged(user => {
         if(user) {
             const userDom = makeUserTemplate(user);
+            const signOutButton = userDom.querySelector('button');
+            signOutButton.addEventListener('click', () => {
+                auth.signOut();
+            });
             header.appendChild(userDom);
         }
         else {
