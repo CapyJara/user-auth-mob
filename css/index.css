@@ -7,6 +7,11 @@ body {
     width: 100%;
 }
 
+h3 {
+    width: 200px;
+    text-align: center;
+}
+
 header {
     display: flex;
     align-items: center;
@@ -76,4 +81,5 @@ a {
     position: relative;
     top: -15px;
     left: 105px;
+    cursor: pointer;
 }
