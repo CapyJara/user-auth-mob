@@ -1,8 +1,11 @@
+import { auth, favoritesByUserRef } from '../firebase/firebase.js';
+
 export function makeCharacterHtml(characterObject) {
     const episodeNum = characterObject.episode[0].slice(40);
     const html = `
     <li class="character-item">
         <h3>${characterObject.name}</h3>
+        <img src="../../assets/fav-unselected.svg" id="favorite-icon">
         <img src="${characterObject.image}">
         <p>Species: ${characterObject.species}</p>
         <p>Status: ${characterObject.status}</p>
@@ -23,6 +26,20 @@ export default function loadCharacters(characterArray) {
 
     characterArray.forEach(character => {
         const dom = makeCharacterHtml(character);
+        const favorites = dom.querySelector('#favorite-icon');
+        favorites.addEventListener('click', () => {
+            const userId = auth.currentUser.uid;
+            const userFavoritesRef = favoritesByUserRef.child(userId);
+            const userFavoriteCharacterRef = userFavoritesRef.child(character.id);
+            userFavoriteCharacterRef.set({
+                id: character.id,
+                name: character.name,
+                image: character.image,
+                species: character.species,
+                status: character.status
+            });
+        });
         characterList.appendChild(dom);
     });
 }
+
