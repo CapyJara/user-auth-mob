@@ -28,22 +28,47 @@ export default function loadCharacters(characterArray) {
         const dom = makeCharacterHtml(character);
         const favorites = dom.querySelector('#favorite-icon');
 
-        console.log('current user', auth.currentUser);
-
         const userId = auth.currentUser.uid;
         const userFavoritesRef = favoritesByUserRef.child(userId);
         const userFavoriteCharacterRef = userFavoritesRef.child(character.id);
+        userFavoriteCharacterRef.once('value')
+            .then(snapshot => {
+                const value = snapshot.val();
+                let isFavorite = false;
+                if(value) {
+                    addFavorite();
+                }
+                else {
+                    removeFavorite();
+                }
+            
         
-        favorites.addEventListener('click', () => {
-            userFavoriteCharacterRef.set({
-                id: character.id,
-                name: character.name,
-                image: character.image,
-                species: character.species,
-                status: character.status
+                function addFavorite() {
+                    isFavorite = true;
+                    favorites.src = './assets/fav-selected.svg';
+                }
+                function removeFavorite() {
+                    isFavorite = false;
+                    favorites.src = './assets/fav-unselected.svg';
+                }
+                favorites.addEventListener('click', () => {
+                    if(isFavorite) {
+                        userFavoriteCharacterRef.remove();
+                        removeFavorite();
+                    }
+                    else {
+                        userFavoriteCharacterRef.set({
+                            id: character.id,
+                            name: character.name,
+                            image: character.image,
+                            species: character.species,
+                            status: character.status,
+                            firstAppeared: character.episode[0].slice(40)
+                        });
+                        addFavorite();
+                    }
+                });
             });
-        });
         characterList.appendChild(dom);
     });
 }
-
