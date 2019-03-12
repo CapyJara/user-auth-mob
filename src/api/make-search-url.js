@@ -2,7 +2,7 @@ export default function makeSearchUrlFromQuery(queryOptions) {
     const baseUrl = 'https://rickandmortyapi.com/api/character/';
 
     if(!queryOptions) {
-        return baseUrl;
+        return './';
     }
 
     const apiURL = new URL(baseUrl);

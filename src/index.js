@@ -7,11 +7,15 @@ import makeSearchUrlFromQuery from './api/make-search-url.js';
 import { readFromQuery } from './api/query-functions.js';
 import loadCharacters from './api/character-component.js';
 import updatePaging from './api/paging-component.js';
+import { auth } from './firebase/firebase.js';
 
 window.addEventListener('hashchange', loadQuery);
 
-function loadQuery() {
+auth.onAuthStateChanged(() => {
+    loadQuery();
+});
 
+function loadQuery() {
     const searchOptions = readFromQuery(window.location.hash);
     const apiURL = makeSearchUrlFromQuery(searchOptions);
     let pagingInfo = {};
