@@ -14,7 +14,7 @@ test('does the hardcoded header match the template', assert => {
 
     const expected = `
         <header>
-            <a href="index.html"><h1>The Books We Like</h1></a>
+            <a href="index.html"><h1>Rick and Morty Characters</h1></a>
             </header>
     `;
     //act

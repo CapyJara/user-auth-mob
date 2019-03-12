@@ -34,6 +34,7 @@ test('template function returns html', function(assert) {
     const expected = `
     <li class="character-item">
         <h3>Aqua Morty</h3>
+        <img src="../../assets/fav-unselected.svg" id="favorite-icon">
         <img src="https://rickandmortyapi.com/api/character/avatar/21.jpeg">
         <p>Species: Humanoid</p>
         <p>Status: unknown</p>

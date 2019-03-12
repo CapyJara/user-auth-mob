@@ -27,10 +27,14 @@ export default function loadCharacters(characterArray) {
     characterArray.forEach(character => {
         const dom = makeCharacterHtml(character);
         const favorites = dom.querySelector('#favorite-icon');
+
+        console.log('current user', auth.currentUser);
+
+        const userId = auth.currentUser.uid;
+        const userFavoritesRef = favoritesByUserRef.child(userId);
+        const userFavoriteCharacterRef = userFavoritesRef.child(character.id);
+        
         favorites.addEventListener('click', () => {
-            const userId = auth.currentUser.uid;
-            const userFavoritesRef = favoritesByUserRef.child(userId);
-            const userFavoriteCharacterRef = userFavoritesRef.child(character.id);
             userFavoriteCharacterRef.set({
                 id: character.id,
                 name: character.name,
