@@ -1,7 +1,13 @@
 import { auth, favoritesByUserRef } from '../firebase/firebase.js';
 
 export function makeCharacterHtml(characterObject) {
-    const episodeNum = characterObject.episode[0].slice(40);
+    let episodeNum = '';
+    if(characterObject.episode) {
+        episodeNum = characterObject.episode[0].slice(40);
+    }
+    else {
+        episodeNum = characterObject.firstAppeared;
+    }      
     const html = `
     <li class="character-item">
         <h3>${characterObject.name}</h3>
