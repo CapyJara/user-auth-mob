@@ -32,10 +32,10 @@ test('no image', assert => {
     // act
     const results = makeUserTemplate(user);
     // assert
-    assert.htmlEqual(results, `
+    assert.htmlEqual(results, /*html*/ `
         <div id="user-profile">
-            <img src="assets/placeholder-avatar.jpg">
-            <p>Y-joe</p>
+            <a href="favorites.html"><img src="assets/placeholder-avatar.jpg"></a>
+            <a href="favorites.html"><p>Y-joe</p></a>
             <button>Logout</button>
         </div>
     `);

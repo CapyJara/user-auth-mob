@@ -15,8 +15,9 @@ export function makeUserTemplate(user) {
     const userPhoto = user.photoURL || 'assets/placeholder-avatar.jpg';
     const dom = `
     <div id="user-profile">
-        <img src="${userPhoto}">
-        <p>${user.displayName}</p>
+        <a href="favorites.html"><img src="${userPhoto}"></a>
+        <a href="favorites.html"><p>${user.displayName}</p></a>
+        
         <button>Logout</button>
     </div>
     `;
