@@ -9,11 +9,10 @@ auth.onAuthStateChanged(user => {
     const userId = user.uid;
     const userFavoritesRef = favoritesByUserRef.child(userId);
 
-    userFavoritesRef.once('value')
-        .then(snapshot => {
-            const data = snapshot.val();
-            const favoriteCharacters = objectToArray(data);
-            loadCharacters(favoriteCharacters);
-            console.log(favoriteCharacters[0]);
-        });
+    userFavoritesRef.on('value', snapshot => {
+        const data = snapshot.val();
+        const favoriteCharacters = objectToArray(data);
+        loadCharacters(favoriteCharacters);
+        console.log(favoriteCharacters[0]);
+    });
 });
