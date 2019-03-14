@@ -13,6 +13,5 @@ auth.onAuthStateChanged(user => {
         const data = snapshot.val();
         const favoriteCharacters = objectToArray(data);
         loadCharacters(favoriteCharacters);
-        console.log(favoriteCharacters[0]);
     });
 });
